@@ -80,6 +80,7 @@ func setupRouter(r chi.Router, cache *traceCache) chi.Router {
 
 func main() {
 	cache := traceCache{}
+	cache.traces = []trace{}
 	r := chi.NewRouter()
 	setupRouter(r, &cache)
 	s := &http.Server{
