@@ -10,6 +10,7 @@ import (
 	"sync"
 
 	"github.com/go-chi/chi"
+	"github.com/go-chi/chi/middleware"
 	"github.com/klauspost/compress/zstd"
 )
 
@@ -47,6 +48,7 @@ func (c *traceCache) Dump() []byte {
 }
 
 func setupRouter(r chi.Router, cache *traceCache) chi.Router {
+	r.Use(middleware.Logger)
 	r.Get("/traces", func(w http.ResponseWriter, r *http.Request) {
 		w.Write(cache.Dump())
 	})
@@ -83,9 +85,5 @@ func main() {
 	cache.traces = []trace{}
 	r := chi.NewRouter()
 	setupRouter(r, &cache)
-	s := &http.Server{
-		Addr:    "localhost:8126",
-		Handler: r,
-	}
-	fmt.Println(s.ListenAndServe())
+	http.ListenAndServe(":8126", r)
 }

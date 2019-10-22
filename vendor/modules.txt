@@ -8,17 +8,18 @@ github.com/facebookgo/limitgroup
 github.com/facebookgo/muster
 # github.com/go-chi/chi v4.0.2+incompatible
 github.com/go-chi/chi
+github.com/go-chi/chi/middleware
 # github.com/golang/protobuf v1.3.1
 github.com/golang/protobuf/proto
 # github.com/honeycombio/libhoney-go v1.12.1
 github.com/honeycombio/libhoney-go
 github.com/honeycombio/libhoney-go/transmission
 # github.com/klauspost/compress v1.8.5
-github.com/klauspost/compress/zstd
+github.com/klauspost/compress/fse
 github.com/klauspost/compress/huff0
 github.com/klauspost/compress/snappy
+github.com/klauspost/compress/zstd
 github.com/klauspost/compress/zstd/internal/xxhash
-github.com/klauspost/compress/fse
 # github.com/pmezard/go-difflib v1.0.0
 github.com/pmezard/go-difflib/difflib
 # github.com/stretchr/testify v1.4.0
@@ -29,16 +30,16 @@ github.com/vmihailenco/msgpack/codes
 # golang.org/x/net v0.0.0-20190603091049-60506f45cf65
 golang.org/x/net/context
 # google.golang.org/appengine v1.6.4
-google.golang.org/appengine/datastore
 google.golang.org/appengine
+google.golang.org/appengine/datastore
 google.golang.org/appengine/datastore/internal/cloudkey
-google.golang.org/appengine/internal
-google.golang.org/appengine/internal/datastore
-google.golang.org/appengine/internal/app_identity
-google.golang.org/appengine/internal/modules
 google.golang.org/appengine/datastore/internal/cloudpb
+google.golang.org/appengine/internal
+google.golang.org/appengine/internal/app_identity
 google.golang.org/appengine/internal/base
+google.golang.org/appengine/internal/datastore
 google.golang.org/appengine/internal/log
+google.golang.org/appengine/internal/modules
 google.golang.org/appengine/internal/remote_api
 # gopkg.in/alexcesaro/statsd.v2 v2.0.0
 gopkg.in/alexcesaro/statsd.v2
