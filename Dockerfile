@@ -1,3 +1,8 @@
+# To build & deploy a new agent:
+# 
+#   docker build . -t us.gcr.io/development-148212/honeycomb-agent:<version>
+#   docker push us.gcr.io/development-148212/honeycomb-agent:<version>
+# 
 FROM golang:1.13.1 as builder
 
 ADD . /src/klyntar
