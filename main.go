@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"compress/gzip"
 	"encoding/json"
+	"math/rand"
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -30,11 +31,11 @@ type traceCache struct {
 	traces []trace
 }
 
-func (c *traceCache) Add(t trace) {
+func (c *traceCache) Add(t trace, requestId int64) {
 	c.mu.Lock()
 	defer c.mu.Unlock()
 
-	fmt.Printf("appending %+v. New cache size: %v\n", t, len(c.traces)+1)
+	fmt.Printf("[%v] appending %+v. New cache size: %v\n", requestId, t, len(c.traces)+1)
 	c.traces = append(c.traces, t)
 }
 
@@ -73,8 +74,10 @@ func setupRouter(r chi.Router, cache *traceCache) chi.Router {
 			panic(err)
 		}
 
+		requestId := rand.Int63()
+
 		for _, ev := range jsonDecodedEvents {
-			cache.Add(ev.Data)
+			cache.Add(ev.Data, requestId)
 		}
 	})
 	return r
